@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>How Kith works | Kith by KHUB.ai</title>
+<meta name="description" content="Kith works in three layers: a vision-language model thinks, Kith turns plans into checked steps and learns, and the robot's own controller moves the motors.">
+<link rel="alternate" hreflang="en" href="https://khub.ai/how-kith-works.html">
+<link rel="alternate" hreflang="zh-Hant-TW" href="https://khub.ai/zh-tw/how-kith-works.html">
+<link rel="icon" href="images/favicon.ico">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&amp;family=Noto+Sans+TC:wght@400;500;700&amp;display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body class="lang-en">
+<a class="skip" href="#main">Skip to content</a>
+<header class="topbar">
+  <a class="brand" href="index.html"><img src="images/logo_KH.png" alt="KHUB.ai" width="120" height="31"></a>
+  <nav aria-label="Main"><a href="index.html">Home</a><a href="how-kith-works.html" aria-current="page">How Kith works</a><a href="demonstrations.html">Demonstrations</a><a href="about.html">About &amp; contact</a><a class="lang" href="zh-tw/how-kith-works.html" hreflang="zh-Hant-TW" lang="zh-Hant-TW">繁體中文</a></nav>
+</header>
+<section class="hero">
+  <p class="kicker">How Kith works</p>
+  <h1>The model thinks, your robot moves,<br>and Kith learns in between</h1>
+  
+  
+</section>
+<main id="main">
+
+<section class="wrap">
+  <h2>Three layers</h2>
+  <figure class="wide"><img src="images/diagram-en.png" alt="Three layers: AI models think, Kith learns in the middle, your robot moves" width="2027" height="1131"></figure>
+  <p><strong>At the top,</strong> a general vision-language model (VLM) does the thinking. It reads instructions, understands camera images, and plans the job. It is too slow to control motors, so it is never in the real-time loop.</p>
+  <p><strong>In the middle,</strong> Kith turns the plan into a program of small steps and runs it. Anything that must happen fast, like spotting a ball in flight, is handled by small, fast parts that Kith builds for the job.</p>
+  <p><strong>At the bottom,</strong> the robot's own controller, or a robot action model, moves the motors and keeps the robot safe.</p>
+  <p>Kith checks each step with the robot's cameras and sensors. It learns by practice and from people's advice, and saves what it learns as programs and notes that people can read and correct. The large AI model is never retrained.</p>
+</section>
+
+<section class="band"><div class="wrap">
+  <h2>Kith learns two kinds of things</h2>
+  <div class="cards"><article class="card"><h3>New jobs from skills the robot already has</h3><p>“After a storm, check the back gutter.” Kith plans with the robot's own skills (go to, look, compare) and checks the result.</p></article><article class="card"><h3>Better motion: smoother, faster, softer</h3><p>“Catch without a bounce: match the ball's speed.” Practice fine-tunes the motion, and a coach's advice can change the motion itself. No AI model is trained.</p></article></div>
+  <p>What Kith learns is kept as plain text you can read, not hidden inside an AI model.</p>
+</div></section>
+
+<section class="wrap">
+  <h2>How Kith meets your robot</h2>
+  <p>Kith is software, and it can work with a robot in more than one way. It can run on the robot itself, if the robot has a suitable processor. Or it can run on a computer nearby and control a simpler robot, such as a basic drone, from there. It can work with smart robots that take a task in words, and with simple ones that take only speed and turn. Just how Kith connects to each robot, we will work out with our design partners.</p>
+  <p>Whatever the setup, your robot's own safety system always has the last word. Kith can send a stop request at any time, and your robot decides how to stop safely.</p>
+</section>
+
+<section class="band"><div class="wrap">
+  <h2>Tools that Kith builds for your robot</h2>
+  <p>Kith builds these tools by itself, on the fly, to suit each robot and each job. No AI or software expertise is required on your part.</p>
+  <div class="cards"><article class="card"><h3>Fast Eye: seeing fast</h3><p>A small vision model that sees one thing very fast, where a big AI model would be too slow: a ball in flight, a part on a belt, a defect. It is trained automatically, with no labeling by hand; a general AI model labels the images and keeps checking its work.</p></article><article class="card"><h3>Skill Tuner: getting better by practice</h3><p>It practices a motor skill on your robot, or on its simulator, and adjusts the skill's settings after each round. It measures every miss, learns how your robot really moves, and gives each new skill a head start.</p></article><article class="card"><h3>Wisdom Eye: finding what matters</h3><p>In a busy or very large scene, Wisdom Eye makes zero-shot or one-shot object recognition much faster than a standard vision-language model can manage alone.</p></article></div>
+</div></section>
+
+<section class="wrap">
+  <h2>What comes built in</h2>
+  <p>Kith comes with modules. Each module is a set of ready-made skills, and a maker picks the modules for a robot. Some modules already work in simulation; others are planned.</p>
+  <div class="table-wrap"><table><thead><tr><th scope="col">Module</th><th scope="col">What it gives your robot</th></tr></thead><tbody><tr><td><strong>Sentinel</strong><br><span class="muted">Kith's own semantic SLAM</span></td><td>Maps a site quickly, recognizes places and things, goes where told in words (“the room past the kitchen”), patrols, takes stock, and reports what changed as the owners wish</td></tr><tr><td><strong>Swarm</strong></td><td>Organizes many robots and drones of different capabilities into teams. It hands out the work, keeps the teams in step, covers for any robot that fails, runs scheduled patrols, upgrades its robots on the fly with Mind Patches, and raises the alarm by the site's own rules</td></tr><tr><td><strong>Perception</strong></td><td>Learns to recognize a new part or product from a single example picture, and sharpens what a robot's small on-board AI model can see with a Mind Patch, with no retraining</td></tr><tr><td><strong>Motion skills</strong></td><td>Toss, catch and gentle catch, learned by practice and carried to a new arm</td></tr><tr><td><strong>Sorting station</strong></td><td>Sorts mixed objects by rules a person states and changes, handling each object with the care it needs</td></tr><tr><td><strong>Human skills</strong></td><td>Learns the people a robot works with: their authority level, preferences, intentions and groups</td></tr><tr><td><strong>Teacher</strong></td><td>Once Kith has mastered a job, teaches it to people</td></tr></tbody></table></div>
+</section>
+<section class="band cta"><div class="wrap"><h2>See it learn</h2><p>Watch two simulated robot arms go from jerky first tries to smooth, accurate juggling.</p><p><a class="btn" href="demonstrations.html">Demonstrations</a></p></div></section>
+</main>
+<footer class="site-footer">
+  <p>Everything shown on this site ran in simulation.</p>
+  <p>© 2026 KHUB-AI LLC. All rights reserved.</p>
+</footer>
+</body>
+</html>

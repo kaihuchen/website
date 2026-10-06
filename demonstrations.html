@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Demonstrations | Kith by KHUB.ai</title>
+<meta name="description" content="Watch two simulated robot arms learn to juggle from plain advice and practice, with no AI model fine-tuned, and see what Kith keeps from the experience.">
+<link rel="alternate" hreflang="en" href="https://khub.ai/demonstrations.html">
+<link rel="alternate" hreflang="zh-Hant-TW" href="https://khub.ai/zh-tw/demonstrations.html">
+<link rel="icon" href="images/favicon.ico">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&amp;family=Noto+Sans+TC:wght@400;500;700&amp;display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body class="lang-en">
+<a class="skip" href="#main">Skip to content</a>
+<header class="topbar">
+  <a class="brand" href="index.html"><img src="images/logo_KH.png" alt="KHUB.ai" width="120" height="31"></a>
+  <nav aria-label="Main"><a href="index.html">Home</a><a href="how-kith-works.html">How Kith works</a><a href="demonstrations.html" aria-current="page">Demonstrations</a><a href="about.html">About &amp; contact</a><a class="lang" href="zh-tw/demonstrations.html" hreflang="zh-Hant-TW" lang="zh-Hant-TW">繁體中文</a></nav>
+</header>
+<section class="hero">
+  <p class="kicker">Demonstrations &middot; all in simulation</p>
+  <h1>A physical skill nobody coded</h1>
+  
+  
+</section>
+<main id="main">
+
+<section class="wrap">
+  <p class="callout">Everything on this page ran in simulation (MuJoCo). Proving it on real robots is the first thing we want to do with our design partners.</p>
+  <h2>Juggling: a fast skill learned by practice</h2>
+  <p class="lead">Kith was given a one-sentence instruction: juggle three balls in a cascade, for twelve catches in a row.</p>
+  <div class="videos">
+    <figure><video controls preload="metadata" playsinline><source src="https://kaihuchen.github.io/articles/KithIntro/cascade-early-throws.mp4" type="video/mp4"></video>
+      <figcaption>An early trial: jerky, stop-start moves. <a href="https://kaihuchen.github.io/articles/KithIntro/cascade-early-throws.mp4">Open the video</a></figcaption></figure>
+    <figure><video controls preload="metadata" playsinline poster="images/juggling.png"><source src="https://kaihuchen.github.io/articles/KithIntro/cascade-fast-eye-t53.webm" type="video/webm"></video>
+      <figcaption>A near-final trial: smooth and accurate. <a href="https://kaihuchen.github.io/articles/KithIntro/cascade-fast-eye-t53.webm">Open the video</a></figcaption></figure>
+  </div>
+  <p>The human coach in this test could not juggle. The advice was plain words about how to move, such as “toss higher to gain time” and “catch without a bounce.” Kith turned each tip into a change in the skill, and set aside the tips that did not help. When practice got stuck, it worked out why on its own: its hands spent too long winding up to catch in time. So it changed the motion itself, letting each catch flow straight into the next throw. Its tosses became precise and its catches soft: each ball is met gently, without a bounce.</p>
+  <p><strong>The point:</strong> a person who knows what good looks like can teach Kith a physical skill in plain words, without doing it themselves or writing any code.</p>
+  <figure class="wide"><img src="images/chart-en.png" alt="Bar chart: catches in a row rose from 1 to 12.6 over 17 pieces of a coach's advice" width="1344" height="734">
+    <figcaption>Gray bars: the best score during practice, on just four throws, so it looks better than it is. Blue bars: the average of 20 new tries.</figcaption></figure>
+</section>
+
+<section class="band"><div class="wrap">
+  <h2>Inside a learned skill</h2>
+  <p>Each part works at the speed it is good at, so the slow AI model never holds up the fast moves.</p>
+  <div class="table-wrap"><table><thead><tr><th scope="col">Part</th><th scope="col">What it does</th><th scope="col">How often</th></tr></thead><tbody><tr><td><strong>Skill program</strong></td><td>Kith generates and stores learned skills as human-readable text, not a neural network</td><td>Written once; revised when stuck</td></tr><tr><td><strong>Fast Eye</strong></td><td>A 7-layer CNN finds each ball in two 125-fps cameras: 3.15 ms a picture on a laptop GPU, with a median error of 0.17 pixels. It was trained on pictures the simulator labeled itself. A tracker fits each ball's flight under gravity and predicts where and when it will land</td><td>Every 4 ms</td></tr><tr><td><strong>Kith</strong></td><td>Hand commands: position, speed, acceleration</td><td>Every 2 ms</td></tr><tr><td><strong>Skill Tuner</strong></td><td>Bayesian optimization, with Gaussian processes and Thompson sampling in a trust region. It learns what physics misses, and measures each miss: how far off, and which way. A skill counts as met only on new tries</td><td>Each round of practice</td></tr><tr><td><strong>Thinker</strong></td><td>When practice gets stuck, it works out why, using time and speed budgets. Then it changes the shape of the motion, or asks the coach</td><td>47 times in all</td></tr><tr><td><strong>Robot controller</strong></td><td>Moves the joints, within its own limits and safety</td><td>About every 1 ms</td></tr></tbody></table></div>
+  <p><strong>What it remembers, and what carried over.</strong> Kith keeps what it learns: the skill itself, the settings tuned for each robot, a model of how each arm really moves, and general lessons, some from the coach and some it worked out on its own. When Kith relearned the skill, it ended ahead, and a second arm learned a new, gentle catch far faster than it could without that knowledge. Kith also knows what a robot cannot do: for one arm, it showed with numbers that the arm could not throw fast enough, instead of practicing in vain.</p>
+</div></section>
+
+<section class="wrap split">
+  <figure><img src="images/knot-simulation.png" alt="A knot tied around a rod in simulation" width="1600" height="1200"></figure>
+  <div>
+    <h2>Reading instructions made for people</h2>
+    <p>In a second test, Kith read a four-panel drawing showing how to tie a slipped constrictor knot, and turned it into exact steps. Where it could not tell from the drawing, it asked an expert and kept the answer as a lesson, trusted only after it held up on new pictures.</p>
+    <p class="muted">The picture shows the knot tied in simulation from Kith's steps. The rope was moved by a simulator shortcut, not by robot hands, so this test was about reading, asking and checking.</p>
+  </div>
+</section>
+
+<section class="wrap">
+  <h2>Coming next</h2>
+  <div class="cards"><article class="card"><h3>Sorting station</h3><p>Teach a robot to sort mixed objects into bins, then change the rules, add something fragile, and give advice about handling it. Planned; its vision trials have begun.</p></article><article class="card"><h3>Mobile sentinel</h3><p>A mobile robot maps a site, takes stock, notices changes, and goes where it is told in words. Teach it what matters in a place and what to report. Working in a simulated home.</p></article></div>
+</section>
+<section class="band cta"><div class="wrap"><h2>Help us prove it on real robots</h2><p>Bring a robot and a job your customers want done, and let's find out together what Kith can learn on your hardware.</p><p><a class="btn" href="about.html#contact">Become a design partner</a></p></div></section>
+</main>
+<footer class="site-footer">
+  <p>Everything shown on this site ran in simulation.</p>
+  <p>© 2026 KHUB-AI LLC. All rights reserved.</p>
+</footer>
+</body>
+</html>

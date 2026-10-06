@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="zh-Hant-TW">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>示範 | Kith by KHUB.ai</title>
+<meta name="description" content="觀看兩支模擬機器手臂如何靠平實的建議與練習學會拋接，過程中沒有微調任何 AI 模型，並了解 Kith 從中保留了什麼。">
+<link rel="alternate" hreflang="en" href="https://khub.ai/demonstrations.html">
+<link rel="alternate" hreflang="zh-Hant-TW" href="https://khub.ai/zh-tw/demonstrations.html">
+<link rel="icon" href="../images/favicon.ico">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&amp;family=Noto+Sans+TC:wght@400;500;700&amp;display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../styles.css">
+</head>
+<body class="lang-zh">
+<a class="skip" href="#main">跳至主要內容</a>
+<header class="topbar">
+  <a class="brand" href="index.html"><img src="../images/logo_KH.png" alt="KHUB.ai" width="120" height="31"></a>
+  <nav aria-label="Main"><a href="index.html">首頁</a><a href="how-kith-works.html">Kith 如何運作</a><a href="demonstrations.html" aria-current="page">示範</a><a href="about.html">關於我們與聯絡</a><a class="lang" href="../demonstrations.html" hreflang="en" lang="en">English</a></nav>
+</header>
+<section class="hero">
+  <p class="kicker">示範 &middot; 皆在模擬環境中完成</p>
+  <h1>一項沒有人寫程式的實體技能</h1>
+  
+  
+</section>
+<main id="main">
+
+<section class="wrap">
+  <p class="callout">本頁所有成果皆在模擬環境（MuJoCo）中完成。在真實機器人上驗證，是我們最想與設計夥伴一起完成的第一件事。</p>
+  <h2>拋接雜耍：透過練習學會的快速技能</h2>
+  <p class="lead">Kith 只收到一句指令：用瀑布式拋接三顆球，連續接住十二次。</p>
+  <div class="videos">
+    <figure><video controls preload="metadata" playsinline><source src="https://kaihuchen.github.io/articles/KithIntro/cascade-early-throws.mp4" type="video/mp4"></video>
+      <figcaption>早期的試驗：動作生硬、走走停停。<a href="https://kaihuchen.github.io/articles/KithIntro/cascade-early-throws.mp4">開啟影片</a></figcaption></figure>
+    <figure><video controls preload="metadata" playsinline poster="../images/juggling.png"><source src="https://kaihuchen.github.io/articles/KithIntro/cascade-fast-eye-t53.webm" type="video/webm"></video>
+      <figcaption>接近完成的試驗：流暢且精準。<a href="https://kaihuchen.github.io/articles/KithIntro/cascade-fast-eye-t53.webm">開啟影片</a></figcaption></figure>
+  </div>
+  <p>這項測試中的人類教練其實不會拋接雜耍。教練的建議都是關於如何動作的平實話語，例如「拋高一點，爭取時間」和「接球不要反彈」。Kith 把每一條建議轉成技能上的一項改變，並捨棄沒有幫助的建議。當練習卡關時，它會自行找出原因：它的手花太多時間在預備動作上，來不及接球。於是它改變了動作本身，讓每一次接球順勢流入下一次拋球。它的拋球變得精準，接球變得輕柔：每一顆球都被輕輕接住，不會反彈。</p>
+  <p><strong>重點是：</strong>只要知道「好」是什麼樣子的人，就能用平實的話教 Kith 一項實體技能，不需要自己會做，也不需要寫任何程式碼。</p>
+  <figure class="wide"><img src="../images/chart-zh.png" alt="長條圖：教練的 17 條建議下，連續接球數從 1 次提升到 12.6 次" width="1344" height="734">
+    <figcaption>灰色長條：練習期間的最佳成績，只根據四次拋球，因此看起來比實際好。藍色長條：20 次全新嘗試的平均。</figcaption></figure>
+</section>
+
+<section class="band"><div class="wrap">
+  <h2>深入了解一項學會的技能</h2>
+  <p>每個元件都以自己擅長的速度運作，因此較慢的 AI 模型從不拖累快速的動作。</p>
+  <div class="table-wrap"><table><thead><tr><th scope="col">元件</th><th scope="col">功能</th><th scope="col">頻率</th></tr></thead><tbody><tr><td><strong>技能程式</strong></td><td>Kith 以人可閱讀的文字（而非神經網路）產生並儲存學會的技能</td><td>只寫一次；卡關時修訂</td></tr><tr><td><strong>Fast Eye</strong></td><td>一個 7 層的卷積神經網路（CNN）在兩台 125 fps 攝影機的畫面中找出每一顆球：在筆電 GPU 上每張影像 3.15 毫秒，誤差中位數 0.17 像素。它以模擬器自動標註的影像訓練而成。追蹤器依重力擬合每顆球的飛行軌跡，並預測它落下的位置與時間</td><td>每 4 毫秒</td></tr><tr><td><strong>Kith</strong></td><td>手部指令：位置、速度、加速度</td><td>每 2 毫秒</td></tr><tr><td><strong>Skill Tuner</strong></td><td>貝氏最佳化，結合高斯過程與信賴域中的湯普森抽樣。它學習物理模型遺漏的部分，並測量每一次失誤：偏差多少、偏向哪個方向。技能只有在全新的嘗試中達標才算學會</td><td>每一輪練習</td></tr><tr><td><strong>Thinker（思考器）</strong></td><td>練習卡關時，它會運用時間與速度預算找出原因，然後改變動作的形態，或向教練請教</td><td>總共 47 次</td></tr><tr><td><strong>機器人控制器</strong></td><td>在自身的限制與安全範圍內驅動各關節</td><td>約每 1 毫秒</td></tr></tbody></table></div>
+  <p><strong>它記住了什麼，又延續了什麼。</strong>Kith 會保留它學到的東西：技能本身、為每台機器人調校好的參數、每支手臂實際如何運動的模型，以及一般性的經驗，其中有些來自教練，有些是它自己歸納出來的。當 Kith 重新學習這項技能時，它起步就領先；另一支手臂學習新的輕柔接球，也比沒有這些知識時快得多。Kith 也知道機器人做不到什麼：對於其中一支手臂，它用數據證明這支手臂拋得不夠快，而不是白白練習。</p>
+</div></section>
+
+<section class="wrap split">
+  <figure><img src="../images/knot-simulation.png" alt="在模擬環境中繞著橫桿打好的繩結" width="1600" height="1200"></figure>
+  <div>
+    <h2>讀懂寫給人看的說明</h2>
+    <p>在第二項測試中，Kith 閱讀了一張四格圖解，內容是如何打一個「活結式收束結」（slipped constrictor knot），並將它轉成精確的步驟。遇到從圖上無法判斷的地方，它會詢問專家，並把答案保存為經驗紀錄；這條經驗要在新的圖片上也成立，才會被採信。</p>
+    <p class="muted">圖中是依照 Kith 的步驟、在模擬環境中打好的繩結。繩子是由模擬器的捷徑移動，而不是機器手，因此這項測試著重的是閱讀、發問與檢查。</p>
+  </div>
+</section>
+
+<section class="wrap">
+  <h2>接下來</h2>
+  <div class="cards"><article class="card"><h3>分揀站</h3><p>教機器人把混雜的物品分到不同的箱子裡，接著更改規則、加入易碎物品，並給它處理方式的建議。規劃中；視覺測試已經開始。</p></article><article class="card"><h3>移動式哨兵</h3><p>移動機器人建立場域地圖、盤點物品、察覺變化，並依口語指示前往目的地。教它在一個場域中什麼重要、該回報什麼。已在模擬住家中運作。</p></article></div>
+</section>
+<section class="band cta"><div class="wrap"><h2>協助我們在真實機器人上驗證</h2><p>帶著您的機器人，以及一項客戶希望它完成的工作，讓我們一起找出 Kith 能在您的硬體上學會什麼。</p><p><a class="btn" href="about.html#contact">成為設計夥伴</a></p></div></section>
+</main>
+<footer class="site-footer">
+  <p>本網站展示的所有成果，皆在模擬環境中完成。</p>
+  <p>© 2026 KHUB-AI LLC 版權所有</p>
+</footer>
+</body>
+</html>
