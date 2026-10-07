@@ -20,7 +20,7 @@
   <nav aria-label="Main"><a href="index.html">Home</a><a href="how-kith-works.html">How Kith works</a><a href="demonstrations.html" aria-current="page">Demonstrations</a><a href="about.html">About &amp; contact</a><a class="lang" href="zh-tw/demonstrations.html" hreflang="zh-Hant-TW" lang="zh-Hant-TW">繁體中文</a></nav>
 </header>
 <section class="hero">
-  <p class="kicker">Demonstrations &middot; all in simulation</p>
+  <p class="kicker">Demonstrations</p>
   <h1>A physical skill nobody coded</h1>
   
   
@@ -28,8 +28,7 @@
 <main id="main">
 
 <section class="wrap">
-  <p class="callout">Everything on this page ran in simulation (MuJoCo). Proving it on real robots is the first thing we want to do with our design partners.</p>
-  <h2>Juggling: a fast skill learned by practice</h2>
+  <h2>Juggling: a fast skill learned by practice <span class="tag">Simulated in MuJoCo</span></h2>
   <p class="lead">Kith was given a one-sentence instruction: juggle three balls in a cascade, for twelve catches in a row.</p>
   <div class="videos">
     <figure><video controls preload="metadata" playsinline><source src="https://kaihuchen.github.io/articles/KithIntro/cascade-early-throws.mp4" type="video/mp4"></video>
@@ -53,7 +52,7 @@
 <section class="wrap split">
   <figure><img src="images/knot-simulation.png" alt="A knot tied around a rod in simulation" width="1600" height="1200"></figure>
   <div>
-    <h2>Reading instructions made for people</h2>
+    <h2>Reading instructions made for people <span class="tag">Simulated in MuJoCo</span></h2>
     <p>In a second test, Kith read a four-panel drawing showing how to tie a slipped constrictor knot, and turned it into exact steps. Where it could not tell from the drawing, it asked an expert and kept the answer as a lesson, trusted only after it held up on new pictures.</p>
     <p class="muted">The picture shows the knot tied in simulation from Kith's steps. The rope was moved by a simulator shortcut, not by robot hands, so this test was about reading, asking and checking.</p>
   </div>
@@ -61,12 +60,11 @@
 
 <section class="wrap">
   <h2>Coming next</h2>
-  <div class="cards"><article class="card"><h3>Sorting station</h3><p>Teach a robot to sort mixed objects into bins, then change the rules, add something fragile, and give advice about handling it. Planned; its vision trials have begun.</p></article><article class="card"><h3>Mobile sentinel</h3><p>A mobile robot maps a site, takes stock, notices changes, and goes where it is told in words. Teach it what matters in a place and what to report. Working in a simulated home.</p></article></div>
+  <div class="cards list"><article class="card"><h3>Swarm: many robots, one mind</h3><p>A mixed team of ground robots and drones guards a warehouse at night. Kith hands out the rounds, notices a robot that goes silent and covers its area, and alerts the people the site names when something is wrong.</p></article><article class="card"><h3>Juggling fragile things with humanlike hands</h3><p>A step up from juggling balls with cups: robot hands with fingers learn to toss and catch things that break, such as eggs. Fragile is defined by force: a try fails if any touch presses harder than the object can take, so success shows in the numbers. Kith learns how strong each kind of object is, and treats that as a belief it can be wrong about.</p></article><article class="card"><h3>Sorting station</h3><p>Teach a robot to sort mixed objects into bins, then change the rules, add something fragile, and give advice about handling it.</p></article><article class="card"><h3>Mobile sentinel</h3><p>A mobile robot maps a site, takes stock, notices changes, and goes where it is told in words. Teach it what matters in a place and what to report.</p></article><article class="card"><h3>People skills: knowing who it works with</h3><p>A robot that works among people needs to know them: whose instructions to follow, what each person calls places and things (“the couch in the den”), their preferences and routines, and when to ask before acting. Kith keeps each of these as a belief it can revise from what people say and do, and asks when it is unsure.</p></article></div>
 </section>
-<section class="band cta"><div class="wrap"><h2>Help us prove it on real robots</h2><p>Bring a robot and a job your customers want done, and let's find out together what Kith can learn on your hardware.</p><p><a class="btn" href="about.html#contact">Become a design partner</a></p></div></section>
+<section class="band cta"><div class="wrap"><h2>Let's make your robots better, together</h2><p>We'd love to see what your robots can do with Kith. Bring a robot and a job your customers want done, and let's build something better together.</p><p><a class="btn" href="about.html#contact">Become a design partner</a></p></div></section>
 </main>
 <footer class="site-footer">
-  <p>Everything shown on this site ran in simulation.</p>
   <p>© 2026 KHUB-AI LLC. All rights reserved.</p>
 </footer>
 </body>

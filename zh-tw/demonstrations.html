@@ -20,7 +20,7 @@
   <nav aria-label="Main"><a href="index.html">首頁</a><a href="how-kith-works.html">Kith 如何運作</a><a href="demonstrations.html" aria-current="page">示範</a><a href="about.html">關於我們與聯絡</a><a class="lang" href="../demonstrations.html" hreflang="en" lang="en">English</a></nav>
 </header>
 <section class="hero">
-  <p class="kicker">示範 &middot; 皆在模擬環境中完成</p>
+  <p class="kicker">示範</p>
   <h1>一項沒有人寫程式的實體技能</h1>
   
   
@@ -28,8 +28,7 @@
 <main id="main">
 
 <section class="wrap">
-  <p class="callout">本頁所有成果皆在模擬環境（MuJoCo）中完成。在真實機器人上驗證，是我們最想與設計夥伴一起完成的第一件事。</p>
-  <h2>拋接雜耍：透過練習學會的快速技能</h2>
+  <h2>拋接雜耍：透過練習學會的快速技能 <span class="tag">MuJoCo 模擬</span></h2>
   <p class="lead">Kith 只收到一句指令：用瀑布式拋接三顆球，連續接住十二次。</p>
   <div class="videos">
     <figure><video controls preload="metadata" playsinline><source src="https://kaihuchen.github.io/articles/KithIntro/cascade-early-throws.mp4" type="video/mp4"></video>
@@ -53,7 +52,7 @@
 <section class="wrap split">
   <figure><img src="../images/knot-simulation.png" alt="在模擬環境中繞著橫桿打好的繩結" width="1600" height="1200"></figure>
   <div>
-    <h2>讀懂寫給人看的說明</h2>
+    <h2>讀懂寫給人看的說明 <span class="tag">MuJoCo 模擬</span></h2>
     <p>在第二項測試中，Kith 閱讀了一張四格圖解，內容是如何打一個「活結式收束結」（slipped constrictor knot），並將它轉成精確的步驟。遇到從圖上無法判斷的地方，它會詢問專家，並把答案保存為經驗紀錄；這條經驗要在新的圖片上也成立，才會被採信。</p>
     <p class="muted">圖中是依照 Kith 的步驟、在模擬環境中打好的繩結。繩子是由模擬器的捷徑移動，而不是機器手，因此這項測試著重的是閱讀、發問與檢查。</p>
   </div>
@@ -61,12 +60,11 @@
 
 <section class="wrap">
   <h2>接下來</h2>
-  <div class="cards"><article class="card"><h3>分揀站</h3><p>教機器人把混雜的物品分到不同的箱子裡，接著更改規則、加入易碎物品，並給它處理方式的建議。規劃中；視覺測試已經開始。</p></article><article class="card"><h3>移動式哨兵</h3><p>移動機器人建立場域地圖、盤點物品、察覺變化，並依口語指示前往目的地。教它在一個場域中什麼重要、該回報什麼。已在模擬住家中運作。</p></article></div>
+  <div class="cards list"><article class="card"><h3>機群協作：多台機器人，一個大腦</h3><p>由地面機器人與無人機組成的混合團隊在夜間守衛倉庫。Kith 分派巡邏路線、察覺失聯的機器人並接手它負責的區域，並在發生狀況時通知場域指定的人員。</p></article><article class="card"><h3>仿生手拋接蛋</h3><p>從用杯狀手拋接球更進一步：有手指的機器手學習拋接像雞蛋一樣易碎的東西。「易碎」以力量來定義：只要任何接觸的力道超過物品所能承受的程度，該次嘗試就算失敗，因此成敗都能用數據呈現。Kith 會學習每一種物品有多堅固，並把它當作一個可能出錯、可以修正的認知。</p></article><article class="card"><h3>分揀站</h3><p>教機器人把混雜的物品分到不同的箱子裡，接著更改規則、加入易碎物品，並給它處理方式的建議。</p></article><article class="card"><h3>巡邏哨兵</h3><p>移動機器人建立場域地圖、盤點物品、察覺變化，並依口語指示前往目的地。教它在一個場域中什麼重要、該回報什麼。</p></article><article class="card"><h3>人際技能：認識共事的人</h3><p>在人身邊工作的機器人需要認識這些人：該聽誰的指示、每個人怎麼稱呼地點與物品（例如「書房那張沙發」）、他們的偏好與作息，以及什麼時候該先問再做。Kith 把這些都當作可以修正的認知，從人們的言行中學習，不確定時就發問。</p></article></div>
 </section>
-<section class="band cta"><div class="wrap"><h2>協助我們在真實機器人上驗證</h2><p>帶著您的機器人，以及一項客戶希望它完成的工作，讓我們一起找出 Kith 能在您的硬體上學會什麼。</p><p><a class="btn" href="about.html#contact">成為設計夥伴</a></p></div></section>
+<section class="band cta"><div class="wrap"><h2>一起讓您的機器人更好</h2><p>我們很期待看到您的機器人搭配 Kith 之後能做到什麼。帶著一台機器人，以及一項客戶希望它完成的工作，讓我們一起打造更好的產品。</p><p><a class="btn" href="about.html#contact">成為設計夥伴</a></p></div></section>
 </main>
 <footer class="site-footer">
-  <p>本網站展示的所有成果，皆在模擬環境中完成。</p>
   <p>© 2026 KHUB-AI LLC 版權所有</p>
 </footer>
 </body>
