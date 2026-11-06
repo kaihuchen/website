@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="zh-Hant-TW">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>兩支低成本手臂學會開罐子 | Kith by KHUB.ai</title>
+<meta name="description" content="Kith 是大腦，手臂是身體。兩支機器手臂要把罐子的蓋子打開，沒有人事先寫好步驟。Kith 自己寫程式、從錯誤中學習，也採納了老師的幾句簡短建議。">
+<link rel="alternate" hreflang="en" href="https://khub.ai/highlights/jar/">
+<link rel="alternate" hreflang="zh-Hant-TW" href="https://khub.ai/zh-tw/highlights/jar/">
+<link rel="icon" href="../../../images/favicon.ico">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&amp;family=Noto+Sans+TC:wght@400;500;700&amp;family=IBM+Plex+Mono:wght@400;500&amp;display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../../styles.css">
+<style>
+/* Layout: one reading column; a timeline of highlights with a date rail; the films at full column width. */
+:root {
+  --paper: #F2F4F6; --panel: #FFFFFF; --ink: #17212B; --ink-2: #4A5664; --rule: #D6DCE3; --accent-ink: #8A5A00;
+  --kith: #B87A00; --teacher: #2F6FB5; --core: #1F9070; --examiner: #8A63B8; --dev: #7B8794; --band: #E7EBEF;
+  --font-display: "Archivo", "Helvetica Neue", Arial, sans-serif;
+  --font-body: "Source Sans 3", "Segoe UI", Arial, sans-serif;
+  --font-mono: "IBM Plex Mono", Consolas, monospace;
+  color-scheme: light;
+}
+
+
+* { box-sizing: border-box; }
+body { margin: 0; background: var(--paper); color: var(--ink); font: 18px/1.55 var(--font-body); }
+main { max-width: 760px; margin: 0 auto; padding: 40px 20px 64px; display: grid; gap: 48px; }
+main > *, .stack > *, figure > * { min-width: 0; }
+h1, h2, h3 { font-family: var(--font-display); text-wrap: balance; margin: 0; line-height: 1.15; }
+h1 { font-size: clamp(30px, 5vw, 42px); font-weight: 800; }
+h2 { font-size: 24px; font-weight: 800; }
+h3 { font-size: 20px; font-weight: 600; }
+p { margin: 0; }
+a { color: var(--accent-ink); }
+a:focus-visible, video:focus-visible, summary:focus-visible, g:focus-visible { outline: 3px solid var(--teacher); outline-offset: 2px; }
+.stack { display: grid; gap: 14px; }
+.eyebrow { font: 500 13px/1.4 var(--font-mono); letter-spacing: .04em; text-transform: uppercase; color: var(--ink-2); }
+.lede { font-size: 20px; color: var(--ink-2); max-width: 65ch; }
+.sim { display: inline-flex; align-items: center; gap: 8px; width: fit-content; padding: 4px 12px; border: 1px solid var(--rule);
+  border-radius: 999px; background: var(--panel); font: 500 13px/1.4 var(--font-mono); color: var(--ink); }
+.sim::before { content: ""; width: 8px; height: 8px; border-radius: 50%; background: var(--kith); }
+figure { margin: 0; display: grid; gap: 8px; }
+video, figure img { width: 100%; max-width: 100%; height: auto; display: block; border-radius: 6px; background: #000; }
+figcaption { font-size: 15px; color: var(--ink-2); text-align: left; margin: 0; }
+.tiles { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; }
+.tile { background: var(--panel); border: 1px solid var(--rule); border-radius: 8px; padding: 14px; display: grid; gap: 4px; align-content: start; }
+.tile b { font: 800 30px/1.1 var(--font-display); font-variant-numeric: tabular-nums; }
+.tile span { font-size: 15px; color: var(--ink-2); line-height: 1.35; }
+.roles { display: grid; grid-template-columns: repeat(auto-fit, minmax(210px, 1fr)); gap: 12px; }
+.role { background: var(--panel); border: 1px solid var(--rule); border-radius: 8px; padding: 14px; display: grid; gap: 6px; align-content: start; font-size: 16px; }
+.who { display: inline-flex; align-items: center; gap: 6px; font: 500 13px/1.3 var(--font-mono); color: var(--ink); }
+.who i { width: 10px; height: 10px; border-radius: 50%; display: inline-block; flex: none; }
+.t-teacher i { background: var(--teacher); } .t-kith i { background: var(--kith); } .t-core i { background: var(--core); }
+.t-examiner i { background: var(--examiner); } .t-developer i { background: var(--dev); }
+.tags { display: flex; flex-wrap: wrap; gap: 6px 14px; }
+.timeline { display: grid; gap: 36px; }
+.hl { display: grid; grid-template-columns: 92px minmax(0, 1fr); gap: 20px; }
+.hl .when { font: 500 13px/1.4 var(--font-mono); color: var(--ink-2); padding-top: 4px; border-top: 3px solid var(--kith); }
+.hl .body { display: grid; gap: 12px; min-width: 0; }
+blockquote { margin: 0; padding: 10px 16px; border-left: 4px solid var(--teacher); background: var(--panel); border-radius: 0 6px 6px 0; font-style: italic; }
+blockquote.by-kith { border-left-color: var(--kith); }
+blockquote cite { display: block; margin-top: 6px; font: normal 500 13px/1.3 var(--font-mono); color: var(--ink-2); }
+.why { font-size: 16px; color: var(--ink-2); }
+.why strong { color: var(--ink); }
+.chart-wrap { background: var(--panel); border: 1px solid var(--rule); border-radius: 8px; padding: 16px; position: relative; }
+.chart-scroll { overflow-x: auto; }
+#chart { width: 100%; min-width: 480px; height: auto; display: block; }
+#chart text { font-family: var(--font-mono); fill: var(--ink-2); }
+#tip { position: absolute; top: 0; left: 0; pointer-events: none; background: var(--ink); color: var(--paper); font: 13px/1.35 var(--font-mono);
+  padding: 6px 9px; border-radius: 5px; max-width: 240px; opacity: 0; transition: opacity .1s; }
+details { font-size: 16px; }
+summary { cursor: pointer; color: var(--accent-ink); }
+table { border-collapse: collapse; margin-top: 10px; font-variant-numeric: tabular-nums; width: 100%; }
+th, td { text-align: left; padding: 4px 8px; border-bottom: 1px solid var(--rule); font-size: 15px; }
+.boxes { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+.box { background: var(--panel); border: 1px solid var(--rule); border-radius: 8px; padding: 18px; display: grid; gap: 10px; align-content: start; }
+.box ul { margin: 0; padding-left: 20px; display: grid; gap: 8px; font-size: 16px; }
+footer { font-size: 15px; color: var(--ink-2); border-top: 1px solid var(--rule); padding-top: 16px; display: grid; gap: 6px; }
+@media (max-width: 640px) {
+  body { font-size: 17px; }
+  .tiles { grid-template-columns: 1fr 1fr; }
+  .hl { grid-template-columns: 1fr; gap: 8px; }
+  .hl .when { border-top: 0; border-left: 3px solid var(--kith); padding: 0 0 0 8px; }
+  .boxes { grid-template-columns: 1fr; }
+}
+@media (prefers-reduced-motion: reduce) { #tip { transition: none; } }
+
+:root {
+  --paper: #FFFFFF; --panel: #FFFFFF; --ink: #303030; --ink-2: #5F6B6C; --rule: #E2E2E2; --accent-ink: #1A6FB5;
+  --band: #F1F1F1; --font-display: Montserrat, "Noto Sans TC", sans-serif; --font-body: Montserrat, "Noto Sans TC", sans-serif;
+  color-scheme: light;
+}
+body { font-size: 17px; line-height: 1.7; }
+main { padding-top: 32px; }
+h2 { font-weight: 600; color: var(--ink); }
+.hero h1 { font-family: var(--font-display); }
+
+:root { --font-display: "Noto Sans TC", "Microsoft JhengHei", "PingFang TC", Montserrat, sans-serif;
+        --font-body: "Noto Sans TC", "Microsoft JhengHei", "PingFang TC", Montserrat, sans-serif;
+        --font-mono: "Noto Sans TC", "Microsoft JhengHei", "PingFang TC", sans-serif; }
+body { line-height: 1.85; }
+.eyebrow { letter-spacing: .02em; }
+blockquote { font-style: normal; }
+</style>
+</head>
+<body class="lang-zh">
+<!-- Built by scripts/highlight_page.py from docs/highlights/jar.zh-TW.json: edit the source, not this page. -->
+<a class="skip" href="#main">跳到主要內容</a>
+<header class="topbar">
+  <a class="brand" href="../../index.html"><img src="../../../images/logo_KH.png" alt="KHUB.ai" width="120" height="31"></a>
+  <nav aria-label="Main"><a href="../../index.html">首頁</a><a href="../../how-kith-works.html">Kith 如何運作</a><a href="../../demonstrations.html" aria-current="page">示範</a><a href="../../about.html">關於我們與聯絡</a><a class="lang" href="../../../highlights/jar/" hreflang="en" lang="en">English</a></nav>
+</header>
+<section class="hero"><p class="kicker">示範</p><h1>兩支低成本手臂學會開罐子</h1></section>
+<main id="main">
+<header class="stack">
+  <p class="eyebrow">Kith 精華紀錄 · 2026 年 10 月 15 日至 11 月 6 日</p>
+  <p class="lede">Kith 是大腦，手臂是身體。兩支機器手臂要把罐子的蓋子打開，沒有人事先寫好步驟。Kith 自己寫程式、從錯誤中學習，也採納了老師的幾句簡短建議。</p>
+  <span class="sim">僅限模擬 · 尚未在真實機器人上驗證</span>
+</header>
+<figure><video controls preload="metadata" poster="../../../highlights/jar/media/t2-run38-plain-64.5s-poster.jpg" src="../../../highlights/jar/media/t2-run38.mp4"></video><figcaption>第 38 次嘗試，11 月 6 日，實際速度（65 秒）。左手臂把橫躺的罐子扶正並握住，右手臂轉開蓋子並把它提起。影片上的文字（英文）顯示 Kith 正在做什麼；藍色文字是模擬器知道、但 Kith 看不到的資訊。</figcaption></figure>
+<section class="tiles" aria-label="成果"><div class="tile"><b>5／5</b><span>連續五組全新的手臂（第 34 至 38 次）</span></div><div class="tile"><b>64–81 秒</b><span>打開每個罐子所需的時間</span></div><div class="tile"><b>0</b><span>這五次嘗試中向人求助的次數</span></div><div class="tile"><b>38</b><span>在這個罐子上的嘗試次數，之前在較大的罐子上試了 17 次</span></div></section>
+<section class="stack"><h2>誰做什麼</h2><div class="roles"><div class="role"><span class="who t-teacher"><i></i>老師</span>懂這份工作的人。用簡單的話給簡短建議，並回答 Kith 的問題。</div><div class="role"><span class="who t-kith"><i></i>Kith</span>撰寫每一份程式、監看每一次執行、找出原因，並決定要改什麼。它的思考由一個大型 AI 模型完成：整個任務都是 Claude Opus 5.5。</div><div class="role"><span class="who t-core"><i></i>Kith Core</span>所有 Kith 任務共用的基礎，保存課程、檢查和記憶。當某個任務暴露出缺口，Core 就加入一個通用的新功能，之後每個任務都能使用。</div><div class="role"><span class="who t-developer"><i></i>開發人員</span>打造模擬世界和通用的手臂技能。模擬器不夠真實時，負責修正。</div><div class="role"><span class="who t-examiner"><i></i>評分者</span>根據模擬器本身的真實數據，為每次嘗試評分。Kith 永遠看不到這些資料。</div></div><p class="why">兩支手臂都是 SO-101，一種低成本的開源機器手臂，模擬時採用它真實的馬達和限制。每支手臂都有兩指夾爪：一支握住罐子，另一支轉蓋子。</p></section>
+<section class="stack"><h2>過程</h2><div class="timeline"><article class="hl"><div class="when">10 月 16 日<br>果醬罐</div><div class="body"><h3>Kith 自己寫程式</h3><div class="tags"><span class="who t-kith"><i></i>Kith</span></div><p>指令只有一句話：「打開桌上的罐子：把蓋子拿下來。」Kith 查看手臂具備的技能，寫出一份程式。前幾次都失敗了：罐子滑走，蓋子沒有轉動。到了第四次，蓋子的密封終於鬆開。</p><p class="why"><strong>為什麼重要：</strong> 這個任務的步驟，沒有人事先寫好。</p></div></article><article class="hl"><div class="when">10 月 16 日</div><div class="body"><h3>它會驗證自己的猜測</h3><div class="tags"><span class="who t-kith"><i></i>Kith</span></div><p>第 5 次之後，Kith 根據自己的紀錄，開了一個「卡關」案例。它列出三個可能的原因，並設計兩個小實驗來分辨。實驗排除了其中一個原因，也顯示夾住蓋子的動作每轉一次，就把罐子推得更遠：5、9，再到 13 毫米。它的第一個修正沒有成功，Kith 也照實記錄下來。</p><p class="why"><strong>為什麼重要：</strong> Kith 用實驗代替猜測，並誠實記錄。</p></div></article><article class="hl"><div class="when">10 月 16 日</div><div class="body"><h3>一句建議，成為所有任務的規則</h3><div class="tags"><span class="who t-teacher"><i></i>老師</span><span class="who t-core"><i></i>Kith Core</span><span class="who t-kith"><i></i>Kith</span></div><blockquote class="by-teacher">「這是兩支手臂合作的情況，計畫中應該考慮如何最能幫助負責工作的那隻手。例如，握住罐子的手應該把罐子擺在讓轉蓋子的手最容易工作的位置。」<cite>老師，看完第 6 次之後</cite></blockquote><p>依照老師的意思，Kith Core 把這句話保存為一條課程，適用於所有由多隻手或多台機器人共同完成同一個目標的任務，而不只是這個罐子。接著，Kith 張開夾爪，量測轉蓋子的手腕往兩個方向各能轉多遠。兩次之後，它自己的程式第一次把蓋子轉鬆了。但蓋子鬆脫後它還繼續轉，這也指出了下一個要學的東西。</p><figure><video controls preload="metadata" src="../../../highlights/jar/media/t1-run8.mp4#t=118,150"></video><figcaption>第 8 次，果醬罐。片段從 1:58 開始；蓋子大約在 2:10 脫離螺紋。</figcaption></figure></div></article><article class="hl"><div class="when">10 月 18 日</div><div class="body"><h3>它知道什麼時候該問</h3><div class="tags"><span class="who t-kith"><i></i>Kith</span><span class="who t-teacher"><i></i>老師</span></div><p>為了測試復原能力，我們故意弄壞握罐子的夾爪，而且沒有告訴 Kith。Kith 從自己的讀數發現了問題。它嘗試了老師曾提過的點子：把罐子壓在牆上，並改良出十一種做法。當伸手可及的每個表面都失敗後，它問道：</p><blockquote class="by-kith">「還有其他方法，或這裡有其他東西，可以讓我在轉蓋子時，讓罐子不跟著轉嗎？還是應該等握罐子的夾爪修好之後，再開罐子？」<cite>Kith，在它給老師的問題中</cite></blockquote><p>老師說不要用牆了，改用一個握罐子的手能穩穩握住的小罐子。從這裡開始，罐子換成了香料罐。</p><p class="why"><strong>為什麼重要：</strong> 一個清楚、說明已經試過什麼的問題，能節省專家的時間。</p></div></article><article class="hl"><div class="when">10 月 19 日<br>香料罐</div><div class="body"><h3>事先埋好檢查，執行中隨時決定</h3><div class="tags"><span class="who t-teacher"><i></i>老師</span><span class="who t-core"><i></i>Kith Core</span><span class="who t-kith"><i></i>Kith</span></div><blockquote class="by-teacher">「規劃者應該在整個預定的動作序列中埋好檢查點（例如檢查夾得夠不夠緊、蓋子有沒有偏離軌道），以便盡快做出調整。」<cite>老師</cite></blockquote><p>Kith Core 當天早上就為所有任務做好了這項功能。在第 3 次嘗試中，Kith 的程式帶了 21 個檢查。有七次，情況和計畫不同。每一次，模擬世界都會暫停，由 Kith 決定怎麼做（繼續、修改剩下的計畫，或發問），然後繼續執行。</p><figure><img src="../../../highlights/jar/media/t2-run3-plain-40s.jpg" alt="兩支黃色機器手臂在一個小罐子旁，右手臂的夾爪夾在蓋子上。" width="690" height="518" loading="lazy"><figcaption>第 3 次。蓋子脫離了螺紋，但罐子在蓋子被提起前就倒了。</figcaption></figure></div></article><article class="hl"><div class="when">10 月 19–21 日</div><div class="body"><h3>錯誤變成檢查</h3><div class="tags"><span class="who t-kith"><i></i>Kith</span><span class="who t-core"><i></i>Kith Core</span></div><p>第 7 次時，罐子倒了，程式卻仍把它當成站著來夾。Kith 從這個錯誤寫出一條規則：只有在最新一次觀察顯示罐子站著時，才用夾站立罐子的方式去夾。保留這條規則之前，Kith 先在舊的紀錄上重播測試：它會在錯誤的夾取前五步就發出警示。兩次之後，這條規則在正確的時刻讓一次執行停了下來。我們稱之為「重播挖掘」（Replay Mining）。</p><p class="why"><strong>為什麼重要：</strong> 每一個錯誤都讓下一次更安全，而且每條新檢查在保留之前，都先在過去的紀錄上驗證過。</p></div></article><article class="hl"><div class="when">10 月 25 日</div><div class="body"><h3>第一次打開罐子</h3><div class="tags"><span class="who t-developer"><i></i>開發人員</span><span class="who t-kith"><i></i>Kith</span></div><p>Kith 夾蓋子時常常偏離中心，把罐子推開。技能庫裡因此新增了一項適用於任何兩指夾爪的通用技能：一種置中的夾法，先靠觸覺把固定的那一指貼到蓋子上。Kith 選擇每次夾蓋子都用它。第 12 次把蓋子拿下來並舉離罐子：275 秒、轉了 8 次，沒有一次打滑。</p><figure><img src="../../../highlights/jar/media/t2-run12-plain-277s.jpg" alt="右手臂把蓋子舉在打開的罐子上方，左手臂握著罐子。" width="690" height="518" loading="lazy"><figcaption>第 12 次的結尾：蓋子被舉離罐子。</figcaption></figure></div></article><article class="hl"><div class="when">10 月 27–29 日</div><div class="body"><h3>更難了：罐子一開始就躺著</h3><div class="tags"><span class="who t-teacher"><i></i>老師</span><span class="who t-core"><i></i>Kith Core</span><span class="who t-kith"><i></i>Kith</span></div><p>接下來，罐子一開始是橫躺的。Kith 的第一個反應是請人把它扶正。老師回答：</p><blockquote class="by-teacher">「我希望 Kith 把它的手段目的分析做得更完善，能用它自己想出如何解決這種相對簡單的問題。當然，遇到更難的問題時，請人幫忙仍然是一個選項。」<cite>老師</cite></blockquote><p>Kith Core 當天就為所有任務做好了手段目的分析。現在，Kith 在求助之前，會先看清差距、手邊有哪些動作，以及每個動作過去實際改變了什麼，並可以為自己設定一個較小的目標。Kith 設定的目標是「把罐子扶正」。第 16 到 18 次都失敗了。第 19 次，它自己把罐子扶正了。第 20 次，它想出一個新招：放鬆握力，讓罐子自己的重量把它甩正。然後，它把蓋子拿了下來。</p><figure><video controls preload="metadata" src="../../../highlights/jar/media/t2-run19.mp4#t=33,50"></video><figcaption>第 19 次。片段從 0:33 開始：左手臂舉起橫躺的罐子，轉動它、把它扶正，然後放下。</figcaption></figure><figure><img src="../../../highlights/jar/media/t2-run20-plain-168s.jpg" alt="右手臂把蓋子提開；罐子立在左手臂的夾爪中。" width="690" height="518" loading="lazy"><figcaption>第 20 次的結尾。這個罐子一開始是橫躺的。</figcaption></figure></div></article><article class="hl"><div class="when">10 月 29 日至 11 月 1 日</div><div class="body"><h3>一次比一次快</h3><div class="tags"><span class="who t-teacher"><i></i>老師</span><span class="who t-core"><i></i>Kith Core</span><span class="who t-kith"><i></i>Kith</span></div><blockquote class="by-teacher">「多餘的動作太多了。這也應該是改進的重點目標。」<cite>老師，看完第 20 次之後</cite></blockquote><p>Kith Core 開始逐一動作告訴 Kith 每一秒花在哪裡。Kith 把每次轉蓋子改得更長、更快（5 秒轉 3.85 弧度，而不是 12 秒轉 3 弧度），刪掉一個沒有作用的回轉，也縮短了空手的移動。打開橫躺罐子所需的時間，從 148 秒（第 22 次）降到 87 秒（第 23 次），再降到 64 秒（第 24 次）。</p></div></article><article class="hl"><div class="when">11 月 1–2 日</div><div class="body"><h3>每台機器人都有點不一樣</h3><div class="tags"><span class="who t-teacher"><i></i>老師</span><span class="who t-developer"><i></i>開發人員</span><span class="who t-kith"><i></i>Kith</span></div><p>真實的手臂從來不會和規格完全一樣。在這裡，每一組新的模擬手臂都有自己的小關節誤差，每個關節大約一度。在誤差最大的那組手臂上，手臂對夾爪位置的感覺，在蓋子處偏了約 1.4 公分，第 25 次因此失敗。老師說：「停下來，做好修正，再試一次。」</p><p>一項新的通用技能可以靠觸覺量測手臂：在蓋子上輕輕夾幾下，就能知道手臂對自身位置的感覺偏了多少，Kith 會把結果記在那台機器人名下。在第 28 次，Kith 也自己想出如何用已有的技能量測蓋子的高度。第 29 次，在誤差最大的手臂上：75.5 秒完成。第 30 次，在一組從未見過的手臂上：它先花大約 20 秒量測自己，然後完成任務。</p><figure><img src="../../../highlights/jar/media/t2-run28-plain-38s.jpg" alt="右手臂的夾爪輕輕夾住站立罐子的蓋子。" width="690" height="518" loading="lazy"><figcaption>第 28 次：手臂檢查，在蓋子上輕輕夾幾下。</figcaption></figure></div></article><article class="hl"><div class="when">11 月 4–6 日</div><div class="body"><h3>連續五次成功</h3><div class="tags"><span class="who t-kith"><i></i>Kith</span></div><p>又有三組新手臂失敗了（第 31 至 33 次）：罐子在桌上移動、鬆開的蓋子滑落，接著罐子倒下滾走。從第 33 次中，Kith 為自己寫了一條限制：只有在罐子碰到桌面時，才放鬆握罐子的手。有了這條限制，第 34 次在同一組手臂上打開了罐子，中途沒有暫停。</p><p>接著是第 35 到 38 次，每次換一組新手臂：四次全部打開了罐子。第 36、37、38 次執行的是同一份程式，完全沒改。每次執行前，Kith 都先說出它預期的結果（時間、動作數、轉動次數、罐子移動的距離、失手次數），三次的每一項量測都落在它預期的範圍內。遇到新狀況時，Kith 自己處理。第 38 次，它的夾爪沿著罐子的方向偏了 1.3 公分落下；它自己的檢查發現了，於是把夾爪滑過去，繼續完成。</p><figure><img src="../../../highlights/jar/media/t2-run38-plain-3-13s-grid.jpg" alt="四張畫面：左手臂來到橫躺的罐子上方、調整位置、沿著罐子滑動，然後夾住。" width="880" height="660" loading="lazy"><figcaption>第 38 次，0:03 到 0:13：接近、調整、沿著罐子滑動、夾住。</figcaption></figure></div></article></div></section>
+<section class="stack"><h2>香料罐的每一次嘗試</h2><p class="why">長條代表打開罐子所需的秒數；小圓圈代表那一次沒有完成。</p><div class="chart-wrap"><div class="chart-scroll"><svg id="chart" viewBox="0 0 720 300" role="img" aria-label="香料罐的每一次嘗試：數字列在下方的表格中。"></svg></div><div id="tip" role="status"></div></div><p class="why">過程中，模擬器被改得更真實了四次（見下方），因此前後的時間不能嚴格比較。</p><details><summary>顯示數字</summary><table id="table"><thead><tr><th>次數</th><th>秒</th><th>備註</th></tr></thead><tbody></tbody></table></details></section><script type="application/json" id="chart-data">{"tries": 38, "max": 300, "unit": "秒", "done": {"12": [275, "罐子站立；第一次打開罐子"], "20": [167, "罐子一開始橫躺"], "22": [148.1, "橫躺的罐子"], "23": [87.3, "橫躺的罐子"], "24": [64.1, "橫躺的罐子"], "29": [75.5, "誤差最大的手臂，沿用它的檢查結果"], "30": [114.1, "從未見過的手臂；先量測自己"], "34": [67.0, "第 33 次的手臂再試一次"], "35": [80.6, "新手臂"], "36": [65.9, "新手臂"], "37": [71.6, "新手臂"], "38": [64.2, "新手臂"]}, "notes": {"11": "未完成就擱置", "21": "因操作人員失誤而中止"}, "phases": [{"from": 1, "to": 14, "label": "罐子站立"}, {"from": 15, "to": 38, "label": "罐子橫躺"}], "labels": [[12, "275 秒"], [22, "148 秒"], [24, "64 秒", "start"]], "bracket": {"from": 34, "to": 38, "label": "連續 5 次"}, "ui": {"done": "第 {i} 次：{v} {u}完成（{note}）", "not": "第 {i} 次：未完成", "notNote": "第 {i} 次：未完成（{note}）", "axis": "嘗試次數", "notDone": "未完成"}}</script><script>
+(function () {
+  const C = JSON.parse(document.getElementById("chart-data").textContent), ui = C.ui;
+  const svg = document.getElementById("chart"), tip = document.getElementById("tip"), wrap = svg.closest(".chart-wrap");
+  const NS = "http://www.w3.org/2000/svg", L = 52, R = 708, T = 36, B = 250, n = C.tries, maxV = C.max, u = C.unit || "";
+  const step = (R - L) / n, x = i => L + (i - 0.5) * step, y = v => B - (v / maxV) * (B - T);
+  const el = (tag, a, parent) => { const e = document.createElementNS(NS, tag); for (const k in a) e.setAttribute(k, a[k]); (parent || svg).appendChild(e); return e; };
+  const fmt = (t, i, v, note) => t.replace("{i}", i).replace("{v}", v).replace("{u}", u).replace("{note}", note || "");
+  const css = v => getComputedStyle(document.documentElement).getPropertyValue(v).trim();
+  function draw() {
+    svg.textContent = "";
+    (C.phases || []).forEach((p, k) => {
+      const x0 = L + (p.from - 1) * step, x1 = L + p.to * step;
+      if (k % 2) el("rect", {x: x0, y: T - 22, width: x1 - x0, height: B - T + 22, fill: css("--band")});
+      el("text", {x: x0 + 5, y: T - 8, "font-size": 12}).textContent = p.label;
+    });
+    for (let k = 0; k <= 3; k++) {
+      const v = Math.round(maxV * k / 3);
+      el("line", {x1: L, x2: R, y1: y(v), y2: y(v), stroke: css("--rule"), "stroke-width": 1});
+      el("text", {x: L - 8, y: y(v) + 4, "font-size": 12, "text-anchor": "end"}).textContent = v + " " + u;
+    }
+    const ticks = [1]; for (let t = 10; t < n; t += 10) ticks.push(t); ticks.push(n);
+    for (const t of ticks) el("text", {x: x(t), y: B + 20, "font-size": 12, "text-anchor": "middle"}).textContent = t;
+    el("text", {x: (L + R) / 2, y: B + 40, "font-size": 12, "text-anchor": "middle"}).textContent = ui.axis;
+    if (C.bracket) {
+      let top = 0; for (let i = C.bracket.from; i <= C.bracket.to; i++) if (C.done[i]) top = Math.max(top, C.done[i][0]);
+      const bx0 = x(C.bracket.from) - step / 2 + 2, bx1 = x(C.bracket.to) + step / 2 - 2, by = y(top) - 14;
+      el("path", {d: `M${bx0} ${by + 6} V${by} H${bx1} V${by + 6}`, fill: "none", stroke: css("--ink-2"), "stroke-width": 1.5});
+      el("text", {x: (bx0 + bx1) / 2, y: by - 6, "font-size": 12, "text-anchor": "middle"}).textContent = C.bracket.label;
+    }
+    for (let i = 1; i <= n; i++) {
+      const d = C.done[i], note = (C.notes || {})[i];
+      const g = el("g", {tabindex: 0, "aria-label": d ? fmt(ui.done, i, d[0], d[1]) : fmt(ui.not, i)});
+      if (d) {
+        const w = Math.min(12, step - 4), r = Math.min(4, w / 2), top = y(d[0]);
+        el("path", {d: `M${x(i) - w / 2} ${B} V${top + r} q0 -${r} ${r} -${r} H${x(i) + w / 2 - r} q${r} 0 ${r} ${r} V${B} Z`, fill: css("--kith")}, g);
+      } else {
+        el("circle", {cx: x(i), cy: B - 6, r: 4, fill: "none", stroke: css("--dev"), "stroke-width": 1.5}, g);
+      }
+      el("rect", {x: x(i) - step / 2, y: T, width: step, height: B - T + 4, fill: "transparent"}, g);
+      const show = () => {
+        tip.textContent = d ? fmt(ui.done, i, d[0], d[1]) : (note ? fmt(ui.notNote, i, "", note) : fmt(ui.not, i));
+        const sr = svg.getBoundingClientRect(), wr = wrap.getBoundingClientRect(), k = sr.width / 720;
+        tip.style.left = Math.max(0, Math.min(sr.left - wr.left + x(i) * k + 10, wr.width - 250)) + "px";
+        tip.style.top = (sr.top - wr.top + (d ? y(d[0]) : B) * k - 40) + "px"; tip.style.opacity = 1;
+      };
+      g.addEventListener("mouseenter", show); g.addEventListener("focus", show);
+      g.addEventListener("mouseleave", () => tip.style.opacity = 0); g.addEventListener("blur", () => tip.style.opacity = 0);
+    }
+    for (const [i, s, a] of (C.labels || [])) {
+      if (!C.done[i]) continue;
+      el("text", {x: x(i) + (a === "start" ? -5 : 0), y: y(C.done[i][0]) - 6, "font-size": 12, "text-anchor": a || "middle", fill: css("--ink")}).textContent = s;
+    }
+  }
+  draw();
+  try { matchMedia("(prefers-color-scheme: dark)").addEventListener("change", draw); } catch (e) {}
+  new MutationObserver(draw).observe(document.documentElement, {attributes: true, attributeFilter: ["data-theme"]});
+  const tb = document.querySelector("#table tbody");
+  for (let i = 1; i <= n; i++) {
+    const d = C.done[i], tr = document.createElement("tr");
+    for (const v of [i, d ? d[0] : ui.notDone, d ? d[1] : ((C.notes || {})[i] || "")]) {
+      const td = document.createElement("td"); td.textContent = v; tr.appendChild(td);
+    }
+    tb.appendChild(tr);
+  }
+})();
+</script>
+<section class="boxes"><div class="box"><h3>模擬器中沒有捷徑</h3><ul><li>罐子只靠接觸和摩擦力握住，握罐子的夾爪上貼有橡膠墊。沒有任何東西被黏在手上，也沒有用程式直接移動物體。</li><li>手臂依照 SO-101 的真實馬達建模：扭力上限、齒輪間隙、編碼器的刻度，以及每支手臂各自的小校正誤差。</li><li>模擬器出錯時，我們就修正它：會一直滾動的罐子、會抖動的手臂（先是缺少伺服死區，後來是齒輪箱摩擦），以及一個因接觸計算錯誤而被彈飛的蓋子。每項修正都記在模擬世界的規格卡上，並附上資料來源。</li></ul></div><div class="box"><h3>目前還沒有證明的事</h3><ul><li>真實機器人。這裡的一切都是模擬（MuJoCo）。</li><li>其他罐子、桌子或任務。這裡只有一個罐子、一張桌子，和一種起始狀態。</li><li>真實視覺。Kith 的相機是替代品：它直接回報物體的位置（加上雜訊），而不是讀取影像。</li><li>真實觸覺。夾爪上的觸覺墊是替代品；SO-101 本身沒有觸覺感測器。</li><li>其他 AI 模型。這裡 Kith 的所有思考都由 Claude Opus 5.5 完成；換用其他模型，在這個任務上還沒有測試過。</li></ul></div></section>
+<footer><p>內容來自 Kith 的開發紀錄。影片是在每次嘗試進行時錄下的。</p><p>KHUB.ai · bizdev@khub.ai</p></footer>
+</main>
+<footer class="site-footer">
+  <p>© 2026 KHUB-AI LLC 版權所有</p>
+</footer>
+<!-- Cloudflare Web Analytics --><script type='module' src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "db9ff15c4d4c4915a1eea8b74ed29f83"}'></script><!-- End Cloudflare Web Analytics -->
+</body>
+</html>
