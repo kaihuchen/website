@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Two low-cost arms learn to open a jar | Kith by KHUB.ai</title>
+<meta name="description" content="Kith is the mind. The arms are the body. Two robot arms had to take the lid off a jar, and nobody wrote the steps. Kith wrote its own programs, learned from its mistakes, and took a few short tips from a teacher.">
+<link rel="icon" href="../../images/favicon.ico">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&amp;family=Noto+Sans+TC:wght@400;500;700&amp;family=IBM+Plex+Mono:wght@400;500&amp;display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../styles.css">
+<style>
+/* Layout: one reading column; a timeline of highlights with a date rail; the films at full column width. */
+:root {
+  --paper: #F2F4F6; --panel: #FFFFFF; --ink: #17212B; --ink-2: #4A5664; --rule: #D6DCE3; --accent-ink: #8A5A00;
+  --kith: #B87A00; --teacher: #2F6FB5; --core: #1F9070; --examiner: #8A63B8; --dev: #7B8794; --band: #E7EBEF;
+  --font-display: "Archivo", "Helvetica Neue", Arial, sans-serif;
+  --font-body: "Source Sans 3", "Segoe UI", Arial, sans-serif;
+  --font-mono: "IBM Plex Mono", Consolas, monospace;
+  color-scheme: light;
+}
+
+
+* { box-sizing: border-box; }
+body { margin: 0; background: var(--paper); color: var(--ink); font: 18px/1.55 var(--font-body); }
+main { max-width: 760px; margin: 0 auto; padding: 40px 20px 64px; display: grid; gap: 48px; }
+main > *, .stack > *, figure > * { min-width: 0; }
+h1, h2, h3 { font-family: var(--font-display); text-wrap: balance; margin: 0; line-height: 1.15; }
+h1 { font-size: clamp(30px, 5vw, 42px); font-weight: 800; }
+h2 { font-size: 24px; font-weight: 800; }
+h3 { font-size: 20px; font-weight: 600; }
+p { margin: 0; }
+a { color: var(--accent-ink); }
+a:focus-visible, video:focus-visible, summary:focus-visible, g:focus-visible { outline: 3px solid var(--teacher); outline-offset: 2px; }
+.stack { display: grid; gap: 14px; }
+.eyebrow { font: 500 13px/1.4 var(--font-mono); letter-spacing: .04em; text-transform: uppercase; color: var(--ink-2); }
+.lede { font-size: 20px; color: var(--ink-2); max-width: 65ch; }
+.sim { display: inline-flex; align-items: center; gap: 8px; width: fit-content; padding: 4px 12px; border: 1px solid var(--rule);
+  border-radius: 999px; background: var(--panel); font: 500 13px/1.4 var(--font-mono); color: var(--ink); }
+.sim::before { content: ""; width: 8px; height: 8px; border-radius: 50%; background: var(--kith); }
+figure { margin: 0; display: grid; gap: 8px; }
+video, figure img { width: 100%; max-width: 100%; height: auto; display: block; border-radius: 6px; background: #000; }
+figcaption { font-size: 15px; color: var(--ink-2); text-align: left; margin: 0; }
+.tiles { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; }
+.tile { background: var(--panel); border: 1px solid var(--rule); border-radius: 8px; padding: 14px; display: grid; gap: 4px; align-content: start; }
+.tile b { font: 800 30px/1.1 var(--font-display); font-variant-numeric: tabular-nums; }
+.tile span { font-size: 15px; color: var(--ink-2); line-height: 1.35; }
+.roles { display: grid; grid-template-columns: repeat(auto-fit, minmax(210px, 1fr)); gap: 12px; }
+.role { background: var(--panel); border: 1px solid var(--rule); border-radius: 8px; padding: 14px; display: grid; gap: 6px; align-content: start; font-size: 16px; }
+.who { display: inline-flex; align-items: center; gap: 6px; font: 500 13px/1.3 var(--font-mono); color: var(--ink); }
+.who i { width: 10px; height: 10px; border-radius: 50%; display: inline-block; flex: none; }
+.t-teacher i { background: var(--teacher); } .t-kith i { background: var(--kith); } .t-core i { background: var(--core); }
+.t-examiner i { background: var(--examiner); } .t-developer i { background: var(--dev); }
+.tags { display: flex; flex-wrap: wrap; gap: 6px 14px; }
+.timeline { display: grid; gap: 36px; }
+.hl { display: grid; grid-template-columns: 92px minmax(0, 1fr); gap: 20px; }
+.hl .when { font: 500 13px/1.4 var(--font-mono); color: var(--ink-2); padding-top: 4px; border-top: 3px solid var(--kith); }
+.hl .body { display: grid; gap: 12px; min-width: 0; }
+blockquote { margin: 0; padding: 10px 16px; border-left: 4px solid var(--teacher); background: var(--panel); border-radius: 0 6px 6px 0; font-style: italic; }
+blockquote.by-kith { border-left-color: var(--kith); }
+blockquote cite { display: block; margin-top: 6px; font: normal 500 13px/1.3 var(--font-mono); color: var(--ink-2); }
+.why { font-size: 16px; color: var(--ink-2); }
+.why strong { color: var(--ink); }
+.chart-wrap { background: var(--panel); border: 1px solid var(--rule); border-radius: 8px; padding: 16px; position: relative; }
+.chart-scroll { overflow-x: auto; }
+#chart { width: 100%; min-width: 480px; height: auto; display: block; }
+#chart text { font-family: var(--font-mono); fill: var(--ink-2); }
+#tip { position: absolute; top: 0; left: 0; pointer-events: none; background: var(--ink); color: var(--paper); font: 13px/1.35 var(--font-mono);
+  padding: 6px 9px; border-radius: 5px; max-width: 240px; opacity: 0; transition: opacity .1s; }
+details { font-size: 16px; }
+summary { cursor: pointer; color: var(--accent-ink); }
+table { border-collapse: collapse; margin-top: 10px; font-variant-numeric: tabular-nums; width: 100%; }
+th, td { text-align: left; padding: 4px 8px; border-bottom: 1px solid var(--rule); font-size: 15px; }
+.boxes { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+.box { background: var(--panel); border: 1px solid var(--rule); border-radius: 8px; padding: 18px; display: grid; gap: 10px; align-content: start; }
+.box ul { margin: 0; padding-left: 20px; display: grid; gap: 8px; font-size: 16px; }
+footer { font-size: 15px; color: var(--ink-2); border-top: 1px solid var(--rule); padding-top: 16px; display: grid; gap: 6px; }
+@media (max-width: 640px) {
+  body { font-size: 17px; }
+  .tiles { grid-template-columns: 1fr 1fr; }
+  .hl { grid-template-columns: 1fr; gap: 8px; }
+  .hl .when { border-top: 0; border-left: 3px solid var(--kith); padding: 0 0 0 8px; }
+  .boxes { grid-template-columns: 1fr; }
+}
+@media (prefers-reduced-motion: reduce) { #tip { transition: none; } }
+
+:root {
+  --paper: #FFFFFF; --panel: #FFFFFF; --ink: #303030; --ink-2: #5F6B6C; --rule: #E2E2E2; --accent-ink: #1A6FB5;
+  --band: #F1F1F1; --font-display: Montserrat, "Noto Sans TC", sans-serif; --font-body: Montserrat, "Noto Sans TC", sans-serif;
+  color-scheme: light;
+}
+body { font-size: 17px; line-height: 1.7; }
+main { padding-top: 32px; }
+h2 { font-weight: 600; color: var(--ink); }
+.hero h1 { font-family: var(--font-display); }
+</style>
+</head>
+<body class="lang-en">
+<!-- Built by scripts/highlight_page.py from docs/highlights/jar.json: edit the source, not this page. -->
+<a class="skip" href="#main">Skip to content</a>
+<header class="topbar">
+  <a class="brand" href="../../index.html"><img src="../../images/logo_KH.png" alt="KHUB.ai" width="120" height="31"></a>
+  <nav aria-label="Main"><a href="../../index.html">Home</a><a href="../../how-kith-works.html">How Kith works</a><a href="../../demonstrations.html" aria-current="page">Demonstrations</a><a href="../../about.html">About &amp; contact</a><a class="lang" href="../../zh-tw/demonstrations.html" hreflang="zh-Hant-TW" lang="zh-Hant-TW">繁體中文</a></nav>
+</header>
+<section class="hero"><p class="kicker">Demonstrations</p><h1>Two low-cost arms learn to open a jar</h1></section>
+<main id="main">
+<header class="stack">
+  <p class="eyebrow">Kith highlight log · Oct 15 – Nov 6, 2026</p>
+  <p class="lede">Kith is the mind. The arms are the body. Two robot arms had to take the lid off a jar, and nobody wrote the steps. Kith wrote its own programs, learned from its mistakes, and took a few short tips from a teacher.</p>
+  <span class="sim">Simulation only · not yet on real robots</span>
+</header>
+<figure><video controls preload="metadata" poster="media/t2-run38-plain-64.5s-poster.jpg" src="media/t2-run38.mp4"></video><figcaption>Try 38, Nov 6, real time (65 s). The left arm stands the lying jar up and holds it. The right arm unscrews the lid and lifts it off. The text on the film shows what Kith is doing. Blue lines are what the simulator knows and Kith does not see.</figcaption></figure>
+<section class="tiles" aria-label="Results"><div class="tile"><b>5 of 5</b><span>new pairs of arms in a row (tries 34–38)</span></div><div class="tile"><b>64–81 s</b><span>to open each jar</span></div><div class="tile"><b>0</b><span>times a person was asked during those five tries</span></div><div class="tile"><b>38</b><span>tries on this jar, after 17 on a larger one</span></div></section>
+<section class="stack"><h2>Who does what</h2><div class="roles"><div class="role"><span class="who t-teacher"><i></i>Teacher</span>A person who knows the work. Gives short tips in plain words and answers Kith&#x27;s questions.</div><div class="role"><span class="who t-kith"><i></i>Kith</span>Writes each program, watches each run, finds causes and decides what to change. A large AI model does its thinking: Claude Opus 5.5 for this whole task.</div><div class="role"><span class="who t-core"><i></i>Kith Core</span>The shared base under every Kith task. Keeps lessons, checks and memory. When a task shows a gap, Core adds a general piece that every task then has.</div><div class="role"><span class="who t-developer"><i></i>Developer</span>Built the simulated world and general arm skills. Fixes the simulator when it is not realistic.</div><div class="role"><span class="who t-examiner"><i></i>Examiner</span>Grades each try from the simulator&#x27;s own truth. Kith never sees it.</div></div><p class="why">The arms are two SO-101s, low-cost open-source robot arms, simulated with their real motors and limits. Each has a two-jaw gripper. One arm holds the jar; the other twists the lid.</p></section>
+<section class="stack"><h2>How it got there</h2><div class="timeline"><article class="hl"><div class="when">Oct 16<br>jam jar</div><div class="body"><h3>Kith writes its own program</h3><div class="tags"><span class="who t-kith"><i></i>Kith</span></div><p>The request was one sentence: &quot;Open the jar on the table: take its lid off.&quot; Kith looked at the skills its arms have and wrote a program. The first runs failed. The jar slid away and the lid did not turn. By the fourth run, the lid&#x27;s seal broke.</p><p class="why"><strong>Why it matters:</strong> No one wrote the steps for this task.</p></div></article><article class="hl"><div class="when">Oct 16</div><div class="body"><h3>It tests its own guesses</h3><div class="tags"><span class="who t-kith"><i></i>Kith</span></div><p>After run 5, Kith opened a &quot;stuck&quot; case from its own records. It named three possible causes and wrote two small experiments to tell them apart. They ruled out one cause and showed the lid grip pushing the jar a little more each stroke: 5, then 9, then 13 mm. Its first fix did not work, and Kith recorded that too.</p><p class="why"><strong>Why it matters:</strong> Kith runs experiments instead of guessing, and keeps an honest record.</p></div></article><article class="hl"><div class="when">Oct 16</div><div class="body"><h3>One tip becomes a rule for every task</h3><div class="tags"><span class="who t-teacher"><i></i>Teacher</span><span class="who t-core"><i></i>Kith Core</span><span class="who t-kith"><i></i>Kith</span></div><blockquote class="by-teacher">"This is a case of two arms working together, and as part of the plan there needs to be some thought about how best to help the working hand. For example, the holding hand should position the jar in a way that makes it easy for the twisting hand to do its work."<cite>The teacher, after watching run 6</cite></blockquote><p>At the teacher&#x27;s word, Kith Core kept this as a lesson for any task where several hands or robots work toward one goal, not just this jar. Kith then measured, with open jaws, how far its twisting wrist could turn each way. Two runs later its own program unscrewed the lid for the first time. It kept twisting after the lid was free, which showed the next thing to learn.</p><figure><video controls preload="metadata" src="media/t1-run8.mp4#t=118,150"></video><figcaption>Run 8, the jam jar. The clip starts at 1:58; the lid comes off its threads at about 2:10.</figcaption></figure></div></article><article class="hl"><div class="when">Oct 18</div><div class="body"><h3>It knows when to ask</h3><div class="tags"><span class="who t-kith"><i></i>Kith</span><span class="who t-teacher"><i></i>Teacher</span></div><p>To test recovery, the holding gripper was broken on purpose, and Kith was not told. Kith noticed from its own readings. It tried an idea the teacher had mentioned, pressing the jar against a wall, and refined it over eleven ways. When every surface in reach had failed, it asked:</p><blockquote class="by-kith">"Is there another way, or another thing here, I could use to keep the jar from turning while the lid is turned, or should the jar be opened only once the holding gripper is repaired?"<cite>Kith, in its question to the teacher</cite></blockquote><p>The teacher said to drop the wall and use a smaller jar the holding hand can keep still. From here on, the jar is a spice jar.</p><p class="why"><strong>Why it matters:</strong> A clear question that says what was tried saves the expert&#x27;s time.</p></div></article><article class="hl"><div class="when">Oct 19<br>spice jar</div><div class="body"><h3>Checks planted ahead, decisions made mid-run</h3><div class="tags"><span class="who t-teacher"><i></i>Teacher</span><span class="who t-core"><i></i>Kith Core</span><span class="who t-kith"><i></i>Kith</span></div><blockquote class="by-teacher">"The Planner should have planted checkers throughout the planned action sequence (for example, checks of grip firmness or the lid going off track) so that adjustments can be made as soon as possible."<cite>The teacher</cite></blockquote><p>Kith Core built this the same morning, for every task. In try 3, Kith&#x27;s program carried 21 checks. Seven times, something went other than planned. Each time the simulated world paused, Kith decided what to do (go on, change the rest of the plan, or ask), and the run went on.</p><figure><img src="media/t2-run3-plain-40s.jpg" alt="Two yellow robot arms at a small jar; the right arm&#x27;s jaws are on the lid." width="690" height="518" loading="lazy"><figcaption>Try 3. The lid came off its threads, but the jar tipped over before the lid was lifted.</figcaption></figure></div></article><article class="hl"><div class="when">Oct 19–21</div><div class="body"><h3>Bugs become checks</h3><div class="tags"><span class="who t-kith"><i></i>Kith</span><span class="who t-core"><i></i>Kith Core</span></div><p>In try 7 the jar fell over, and the program then gripped it as if it were standing. Kith wrote a rule from that mistake: grip a jar as standing only while the latest look says it stands. Before keeping the rule, Kith replayed it on the old run: it would have fired five steps before the bad grip. Two tries later, the rule stopped a run at the right moment. We call this Replay Mining.</p><p class="why"><strong>Why it matters:</strong> Every mistake makes the next try safer, and each new check is proven on past runs before it is kept.</p></div></article><article class="hl"><div class="when">Oct 25</div><div class="body"><h3>The first open jar</h3><div class="tags"><span class="who t-developer"><i></i>Developer</span><span class="who t-kith"><i></i>Kith</span></div><p>Kith&#x27;s grips often caught the lid off-center and pushed the jar. A new general skill went into the catalog for any two-jaw gripper: a centered grip that brings the fixed jaw to the lid by feel. Kith chose to use it for every lid grip. Try 12 took the lid off and held it clear: 275 seconds, 8 turns, none slipped.</p><figure><img src="media/t2-run12-plain-277s.jpg" alt="The right arm holds the lid in the air above the open jar; the left arm holds the jar." width="690" height="518" loading="lazy"><figcaption>Try 12, the end: the lid held clear above the jar.</figcaption></figure></div></article><article class="hl"><div class="when">Oct 27–29</div><div class="body"><h3>Harder: the jar starts on its side</h3><div class="tags"><span class="who t-teacher"><i></i>Teacher</span><span class="who t-core"><i></i>Kith Core</span><span class="who t-kith"><i></i>Kith</span></div><p>Now the jar started lying down. Kith&#x27;s first answer was to ask a person to stand it up. The teacher replied:</p><blockquote class="by-teacher">"I would expect Kith to perfect its means-ends analysis, so that it can use it to figure out how to solve such a relatively simple problem by itself. Of course, asking a human for help is still an option for harder problems."<cite>The teacher</cite></blockquote><p>Kith Core built means-ends analysis that day, for every task. Before asking for help, Kith now looks at the gap, the moves it has, and what each move has been seen to change. It may set itself a smaller goal. Kith set the goal &quot;stand the jar up.&quot; Tries 16 to 18 failed. In try 19 it stood the jar up by itself. In try 20 it found a new trick: it eased its grip and let the jar&#x27;s own weight swing it upright. Then it took the lid off.</p><figure><video controls preload="metadata" src="media/t2-run19.mp4#t=33,50"></video><figcaption>Try 19. The clip starts at 0:33: the left arm lifts the lying jar, turns it, tips it upright and sets it down.</figcaption></figure><figure><img src="media/t2-run20-plain-168s.jpg" alt="The right arm lifts the lid away; the jar stands in the left arm&#x27;s grip." width="690" height="518" loading="lazy"><figcaption>Try 20, the end. This jar started on its side.</figcaption></figure></div></article><article class="hl"><div class="when">Oct 29 – Nov 1</div><div class="body"><h3>Faster each time</h3><div class="tags"><span class="who t-teacher"><i></i>Teacher</span><span class="who t-core"><i></i>Kith Core</span><span class="who t-kith"><i></i>Kith</span></div><blockquote class="by-teacher">"Too much wasted motion. This should also be a key target for improvement."<cite>The teacher, after try 20</cite></blockquote><p>Kith Core began showing Kith where every second went, move by move. Kith made each lid stroke longer and faster (3.85 radians in 5 seconds, instead of 3 in 12), dropped a turn back that did no work, and shortened its free moves. Time to open a lying jar went from 148 s (try 22) to 87 s (try 23) to 64 s (try 24).</p></div></article><article class="hl"><div class="when">Nov 1–2</div><div class="body"><h3>Every robot is a little different</h3><div class="tags"><span class="who t-teacher"><i></i>Teacher</span><span class="who t-developer"><i></i>Developer</span><span class="who t-kith"><i></i>Kith</span></div><p>Real arms are never built exactly to spec. Here, each new pair of simulated arms gets its own small joint errors, about a degree per joint. On the worst pair, the arm&#x27;s sense of where its jaws were was about 1.4 cm off at the lid, and try 25 failed. The teacher said: &quot;Stop, build the fix, and retry.&quot;</p><p>A new general skill measures an arm by touch. Gentle closes on the lid show how far the arm&#x27;s own sense of position is off, and Kith keeps the result for that robot. In try 28, Kith also worked out by itself how to measure the lid&#x27;s height with skills it already had. Try 29, on the worst arm: done in 75.5 s. Try 30, on an arm it had never met: it measured itself first, in about 20 seconds, and finished.</p><figure><img src="media/t2-run28-plain-38s.jpg" alt="The right arm&#x27;s jaws close gently around the lid of the standing jar." width="690" height="518" loading="lazy"><figcaption>Try 28: the arm check, gentle closes on the lid.</figcaption></figure></div></article><article class="hl"><div class="when">Nov 4–6</div><div class="body"><h3>Five in a row</h3><div class="tags"><span class="who t-kith"><i></i>Kith</span></div><p>Three more new pairs of arms failed (tries 31 to 33). The jar walked, then a freed lid slipped, then the jar fell and rolled away. From try 33, Kith wrote itself a limit: loosen the holding grip only when the jar is at the table. With it, try 34, on the same arms, opened the jar with no pause.</p><p>Then tries 35 to 38, each with a new pair of arms: all four opened the jar. Tries 36, 37 and 38 ran the same program, unchanged. Before each run Kith said what it expected (time, moves, turns, drift, lost holds), and on all three every measure fell inside its range. When something new came up, Kith handled it. In try 38 its jaws came down 1.3 cm off along the jar. Its own check caught it, and it slid the jaws over and went on.</p><figure><img src="media/t2-run38-plain-3-13s-grid.jpg" alt="Four frames: the left arm comes over the lying jar, shifts, slides along it, and closes." width="880" height="660" loading="lazy"><figcaption>Try 38, 0:03 to 0:13: the approach, the shift, the slide along the jar, the grip.</figcaption></figure></div></article></div></section>
+<section class="stack"><h2>Every try on the spice jar</h2><p class="why">Bars show the seconds to open the jar. A small ring means the try did not finish.</p><div class="chart-wrap"><div class="chart-scroll"><svg id="chart" viewBox="0 0 720 300" role="img" aria-label="Every try on the spice jar: the numbers are in the table below."></svg></div><div id="tip" role="status"></div></div><p class="why">The simulator was made more realistic four times along the way (see below), so early and late times are not a strict comparison.</p><details><summary>Show the numbers</summary><table id="table"><thead><tr><th>Try</th><th>s</th><th>Note</th></tr></thead><tbody></tbody></table></details></section><script type="application/json" id="chart-data">{"tries": 38, "max": 300, "unit": "s", "done": {"12": [275, "jar standing; the first open jar"], "20": [167, "jar started on its side"], "22": [148.1, "lying jar"], "23": [87.3, "lying jar"], "24": [64.1, "lying jar"], "29": [75.5, "the worst arm, its check kept"], "30": [114.1, "an arm never met; it measured itself first"], "34": [67.0, "try 33's arms again"], "35": [80.6, "new arms"], "36": [65.9, "new arms"], "37": [71.6, "new arms"], "38": [64.2, "new arms"]}, "notes": {"11": "set aside unfinished", "21": "stopped by an operator's mistake"}, "phases": [{"from": 1, "to": 14, "label": "jar standing"}, {"from": 15, "to": 38, "label": "jar lying on its side"}], "labels": [[12, "275 s"], [22, "148 s"], [24, "64 s", "start"]], "bracket": {"from": 34, "to": 38, "label": "5 in a row"}}</script><script>
+(function () {
+  const C = JSON.parse(document.getElementById("chart-data").textContent);
+  const svg = document.getElementById("chart"), tip = document.getElementById("tip"), wrap = svg.closest(".chart-wrap");
+  const NS = "http://www.w3.org/2000/svg", L = 52, R = 708, T = 36, B = 250, n = C.tries, maxV = C.max, u = C.unit || "";
+  const step = (R - L) / n, x = i => L + (i - 0.5) * step, y = v => B - (v / maxV) * (B - T);
+  const el = (tag, a, parent) => { const e = document.createElementNS(NS, tag); for (const k in a) e.setAttribute(k, a[k]); (parent || svg).appendChild(e); return e; };
+  const css = v => getComputedStyle(document.documentElement).getPropertyValue(v).trim();
+  function draw() {
+    svg.textContent = "";
+    (C.phases || []).forEach((p, k) => {
+      const x0 = L + (p.from - 1) * step, x1 = L + p.to * step;
+      if (k % 2) el("rect", {x: x0, y: T - 22, width: x1 - x0, height: B - T + 22, fill: css("--band")});
+      el("text", {x: x0 + 5, y: T - 8, "font-size": 12}).textContent = p.label;
+    });
+    for (let k = 0; k <= 3; k++) {
+      const v = Math.round(maxV * k / 3);
+      el("line", {x1: L, x2: R, y1: y(v), y2: y(v), stroke: css("--rule"), "stroke-width": 1});
+      el("text", {x: L - 8, y: y(v) + 4, "font-size": 12, "text-anchor": "end"}).textContent = v + " " + u;
+    }
+    const ticks = [1]; for (let t = 10; t < n; t += 10) ticks.push(t); ticks.push(n);
+    for (const t of ticks) el("text", {x: x(t), y: B + 20, "font-size": 12, "text-anchor": "middle"}).textContent = t;
+    el("text", {x: (L + R) / 2, y: B + 40, "font-size": 12, "text-anchor": "middle"}).textContent = "try";
+    if (C.bracket) {
+      let top = 0; for (let i = C.bracket.from; i <= C.bracket.to; i++) if (C.done[i]) top = Math.max(top, C.done[i][0]);
+      const bx0 = x(C.bracket.from) - step / 2 + 2, bx1 = x(C.bracket.to) + step / 2 - 2, by = y(top) - 14;
+      el("path", {d: `M${bx0} ${by + 6} V${by} H${bx1} V${by + 6}`, fill: "none", stroke: css("--ink-2"), "stroke-width": 1.5});
+      el("text", {x: (bx0 + bx1) / 2, y: by - 6, "font-size": 12, "text-anchor": "middle"}).textContent = C.bracket.label;
+    }
+    for (let i = 1; i <= n; i++) {
+      const d = C.done[i], note = (C.notes || {})[i];
+      const g = el("g", {tabindex: 0, "aria-label": d ? `Try ${i}: done in ${d[0]} ${u}, ${d[1]}` : `Try ${i}: not done`});
+      if (d) {
+        const w = Math.min(12, step - 4), r = Math.min(4, w / 2), top = y(d[0]);
+        el("path", {d: `M${x(i) - w / 2} ${B} V${top + r} q0 -${r} ${r} -${r} H${x(i) + w / 2 - r} q${r} 0 ${r} ${r} V${B} Z`, fill: css("--kith")}, g);
+      } else {
+        el("circle", {cx: x(i), cy: B - 6, r: 4, fill: "none", stroke: css("--dev"), "stroke-width": 1.5}, g);
+      }
+      el("rect", {x: x(i) - step / 2, y: T, width: step, height: B - T + 4, fill: "transparent"}, g);
+      const show = () => {
+        tip.textContent = d ? `Try ${i}: done in ${d[0]} ${u} (${d[1]})` : `Try ${i}: not done` + (note ? ` (${note})` : "");
+        const sr = svg.getBoundingClientRect(), wr = wrap.getBoundingClientRect(), k = sr.width / 720;
+        tip.style.left = Math.max(0, Math.min(sr.left - wr.left + x(i) * k + 10, wr.width - 250)) + "px";
+        tip.style.top = (sr.top - wr.top + (d ? y(d[0]) : B) * k - 40) + "px"; tip.style.opacity = 1;
+      };
+      g.addEventListener("mouseenter", show); g.addEventListener("focus", show);
+      g.addEventListener("mouseleave", () => tip.style.opacity = 0); g.addEventListener("blur", () => tip.style.opacity = 0);
+    }
+    for (const [i, s, a] of (C.labels || [])) {
+      if (!C.done[i]) continue;
+      el("text", {x: x(i) + (a === "start" ? -5 : 0), y: y(C.done[i][0]) - 6, "font-size": 12, "text-anchor": a || "middle", fill: css("--ink")}).textContent = s;
+    }
+  }
+  draw();
+  try { matchMedia("(prefers-color-scheme: dark)").addEventListener("change", draw); } catch (e) {}
+  new MutationObserver(draw).observe(document.documentElement, {attributes: true, attributeFilter: ["data-theme"]});
+  const tb = document.querySelector("#table tbody");
+  for (let i = 1; i <= n; i++) {
+    const d = C.done[i], tr = document.createElement("tr");
+    for (const v of [i, d ? d[0] : "not done", d ? d[1] : ((C.notes || {})[i] || "")]) {
+      const td = document.createElement("td"); td.textContent = v; tr.appendChild(td);
+    }
+    tb.appendChild(tr);
+  }
+})();
+</script>
+<section class="boxes"><div class="box"><h3>No shortcuts in the simulator</h3><ul><li>The jar is held only by contact and friction, with rubber pads on the holding jaws. Nothing is glued to a hand or moved by script.</li><li>The arms are modeled on the SO-101&#x27;s real motors: torque limits, gear play, encoder steps, and each arm&#x27;s own small calibration errors.</li><li>When the simulator was wrong, it was fixed: a jar that rolled forever, arms that shook (a missing servo dead zone, then gearbox friction), and a lid thrown by a contact glitch. Each fix is on the world&#x27;s spec card, with its source.</li></ul></div><div class="box"><h3>What this does not show yet</h3><ul><li>Real robots. Everything here is simulation (MuJoCo).</li><li>Other jars, tables or tasks. This is one jar, one table, and one kind of start.</li><li>Real vision. Kith&#x27;s camera is a stand-in. It reports where things are, with noise added, instead of reading pictures.</li><li>Real touch. The touch pads on the jaws are a stand-in; the SO-101 has none.</li><li>Another AI model. Claude Opus 5.5 did all of Kith&#x27;s thinking here. A swap to another model is not yet tested on this task.</li></ul></div></section>
+<footer><p>From Kith's development records. The films were recorded as the tries ran.</p><p>KHUB.ai · bizdev@khub.ai</p></footer>
+</main>
+<footer class="site-footer">
+  <p>© 2026 KHUB-AI LLC. All rights reserved.</p>
+</footer>
+<!-- Cloudflare Web Analytics --><script type='module' src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "db9ff15c4d4c4915a1eea8b74ed29f83"}'></script><!-- End Cloudflare Web Analytics -->
+</body>
+</html>
