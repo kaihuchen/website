@@ -56,7 +56,10 @@
   <figure><img src="images/juggling.png" alt="Two simulated robot arms juggling three balls" width="640" height="480"></figure>
   <div>
     <h2>A physical skill, learned by practice</h2>
-    <p>Two simulated robot arms learned to juggle three balls from a one-sentence task, practice, and plain advice from a human coach who could not juggle. No AI model was fine-tuned. What one arm learned carried over to a second arm, giving it a head start.</p>
+    <p>Two simulated robot arms learned to juggle three balls from a one-sentence task, practice, and plain advice from a human coach who could not juggle. No AI model was fine-tuned.</p>
+    <p class="muted">The arms are make-believe UR5e arms, simulated at 1.5 times the real arm's joint speed, acceleration and motor torque; no such arm is sold. The developer designed the search; Kith’s tuner chose the numbers.</p>
+    <p>Carrying over what it learned on a faster, make-believe version of the arm, Kith adapted its gentle catch to a real-speed UR5e in 5 of 5 runs (median 92 throws), and each result caught 20 of 20 fresh throws gently. Learning from scratch succeeded in 1 of 5 runs within 600 throws.</p>
+    <p class="muted">Simulated in MuJoCo, 5 runs each. A real-speed UR5e arm with a cup for a hand; the ball seen by a simulated camera with delay and blur; the make-believe arm ran at 1.5 times the real arm’s speed. The program’s shape was written by Kith’s model (Claude); Kith’s tuner chose the numbers.</p>
     <p><a class="more" href="demonstrations.html">Watch the early and near-final trials</a></p>
   </div>
 </section>
