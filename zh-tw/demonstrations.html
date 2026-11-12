@@ -39,13 +39,13 @@
   <p>這項測試中的人類教練其實不會拋接雜耍。教練的建議都是關於如何動作的平實話語，例如「拋高一點，爭取時間」和「接球不要反彈」。Kith 把每一條建議轉成技能上的一項改變，並捨棄沒有幫助的建議。當練習卡關時，它會自行找出原因：它的手花太多時間在預備動作上，來不及接球。於是它改變了動作本身，讓每一次接球順勢流入下一次拋球。它的拋球變得精準，接球變得輕柔：每一顆球都被輕輕接住，不會反彈。</p>
   <p><strong>重點是：</strong>只要知道「好」是什麼樣子的人，就能用平實的話教 Kith 一項實體技能，不需要自己會做，也不需要寫任何程式碼。</p>
   <figure class="wide"><img src="../images/chart-zh.png" alt="長條圖：教練的 17 條建議下，連續接球數從 1 次提升到 12.6 次" width="1344" height="734">
-    <figcaption>灰色長條：練習期間的最佳成績，只根據四次拋球，因此看起來比實際好。藍色長條：20 次全新嘗試的平均。</figcaption></figure>
+    <figcaption>灰色長條：練習期間的最佳成績，只根據四次拋球，因此看起來比實際好。藍色長條：20 次測試的平均。</figcaption></figure>
 </section>
 
 <section class="band"><div class="wrap">
   <h2>深入了解一項學會的技能</h2>
   <p>每個元件都以自己擅長的速度運作，因此較慢的 AI 模型從不拖累快速的動作。</p>
-  <div class="table-wrap"><table><thead><tr><th scope="col">元件</th><th scope="col">功能</th><th scope="col">頻率</th></tr></thead><tbody><tr><td><strong>技能程式</strong></td><td>Kith 以人可閱讀的文字（而非神經網路）產生並儲存學會的技能</td><td>只寫一次；卡關時修訂</td></tr><tr><td><strong>Fast Eye</strong></td><td>一個 7 層的卷積神經網路（CNN）在兩台 125 fps 攝影機的畫面中找出每一顆球：在筆電 GPU 上每張影像 3.15 毫秒，誤差中位數 0.17 像素。它以模擬器自動標註的影像訓練而成。追蹤器依重力擬合每顆球的飛行軌跡，並預測它落下的位置與時間</td><td>每 4 毫秒</td></tr><tr><td><strong>Kith</strong></td><td>手部指令：位置、速度、加速度</td><td>每 2 毫秒</td></tr><tr><td><strong>Skill Tuner</strong></td><td>貝氏最佳化，結合高斯過程與信賴域中的湯普森抽樣。它學習物理模型遺漏的部分，並測量每一次失誤：偏差多少、偏向哪個方向。技能只有在全新的嘗試中達標才算學會</td><td>每一輪練習</td></tr><tr><td><strong>Thinker（思考器）</strong></td><td>練習卡關時，它會運用時間與速度預算找出原因，然後改變動作的形態，或向教練請教</td><td>總共 47 次</td></tr><tr><td><strong>機器人控制器</strong></td><td>在自身的限制與安全範圍內驅動各關節</td><td>約每 1 毫秒</td></tr></tbody></table></div>
+  <div class="table-wrap"><table><thead><tr><th scope="col">元件</th><th scope="col">功能</th><th scope="col">頻率</th></tr></thead><tbody><tr><td><strong>技能程式</strong></td><td>Kith 以人可閱讀的文字（而非神經網路）產生並儲存學會的技能</td><td>只寫一次；卡關時修訂</td></tr><tr><td><strong>Fast Eye</strong></td><td>一個小型視覺模型在兩台攝影機的畫面中找出每一顆球：在筆電 GPU 上每張影像 3.15 毫秒，誤差中位數 0.17 像素。它以模擬器自動標註的影像訓練而成。Kith 再預測每顆球落下的位置與時間</td><td>每 4 毫秒</td></tr><tr><td><strong>Kith</strong></td><td>手部指令：位置、速度、加速度</td><td>每 2 毫秒</td></tr><tr><td><strong>Skill Tuner</strong></td><td>每一輪練習之後調整技能的設定。它測量每一次失誤：偏差多少、偏向哪個方向，並學習手臂實際的運動方式。技能只有在練習之外的測試中達標才算學會</td><td>每一輪練習</td></tr><tr><td><strong>Thinker（思考器）</strong></td><td>練習卡關時，它會找出原因，然後改變動作的形態，或向教練請教</td><td>總共 47 次</td></tr><tr><td><strong>機器人控制器</strong></td><td>在自身的限制與安全範圍內驅動各關節</td><td>約每 1 毫秒</td></tr></tbody></table></div>
   <p><strong>它記住了什麼，又延續了什麼。</strong>Kith 會保留它學到的東西：技能本身、為每台機器人調校好的參數、每支手臂實際如何運動的模型，以及一般性的經驗，其中有些來自教練，有些是它自己歸納出來的。當 Kith 重新學習這項技能時，它起步就領先；另一支手臂學習新的輕柔接球，也比沒有這些知識時快得多。Kith 也知道機器人做不到什麼：對於其中一支手臂，它用數據證明這支手臂拋得不夠快，而不是白白練習。</p>
 </div></section>
 
